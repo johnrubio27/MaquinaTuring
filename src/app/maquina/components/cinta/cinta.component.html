@@ -1,1 +1,26 @@
-<p>cinta works!</p>
+<div class="flex justify-content-center flex-wrap" *ngIf="enabled">
+    <p-fieldset legend="Inicial">
+        <div class="grid">
+            <div class="col-12">
+                <ng-container *ngFor="let item of arrayEntrada;let i = index">
+                    <p-avatar *ngIf="i === 1" label="Q0" styleClass="m-2" size="large" [style]="{'background-color':'#FCE905', 'color': '#ffffff'}"></p-avatar>
+                    <p-avatar *ngIf="i !== 1" label=" " styleClass="m-2 opacity-0" size="large" [style]="{'background-color':'#FFC300x', 'color': '#ffffff'}"></p-avatar>
+                </ng-container>
+            </div>
+        </div>      
+        <div class="grid">
+            <div class="col-12">
+                <ng-container *ngFor="let item of arrayEntrada;let i = index">
+                    <p-avatar *ngIf="i === 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color': '#FF5733', 'color': '#ffffff'}"></p-avatar>
+                    <p-avatar *ngIf="i !== 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                </ng-container>
+            </div>
+        </div>
+    </p-fieldset>
+    
+    <ng-container *ngFor="let item of secuencia;let i = index">
+        {{item | json}}
+        <!-- <p-avatar *ngIf="i === 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color':'#000000', 'color': '#ffffff'}"></p-avatar> -->
+        <!-- <p-avatar *ngIf="i !== 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar> -->
+    </ng-container>
+</div>

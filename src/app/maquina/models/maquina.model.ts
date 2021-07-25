@@ -3,30 +3,32 @@ export class Maquina {
     entrada: string[];
     _cambioIzqDer: string[] = [];
     _transicion: Transicion[] = [];
+
     constructor(entrada: string[]) {
         this.entrada = entrada;
     }
-    rrecorrer(estado: string){
+
+    rrecorrer(estado: string) {
         let aux: string = estado;
         for (let index = 0; index < this.entrada.length; index++) {
-            if(index != 0){
+            if (index != 0) {
                 switch (aux) {
                     case 'Q0':
                         switch (this.entrada[index]) {
                             case 'a':
                                 this._cambioIzqDer.push('a');
                                 aux = 'Q0';
-                                this._transicion.push(new Transicion('a',Movimientos.Der,aux))
+                                this._transicion.push(new Transicion(this.entrada[index],'a', Movimientos.Der, aux))
                                 break;
                             case 'b':
                                 this._cambioIzqDer.push('a');
                                 aux = 'Q0';
-                                this._transicion.push(new Transicion('a',Movimientos.Der,aux))
+                                this._transicion.push(new Transicion(this.entrada[index],'a', Movimientos.Der, aux))
                                 break;
                             case '_':
                                 this._cambioIzqDer.push('_');
                                 aux = 'Q1';
-                                this._transicion.push(new Transicion('_',Movimientos.Izq,aux))
+                                this._transicion.push(new Transicion(this.entrada[index],'_', Movimientos.Izq, aux))
                                 break;
                         }
                         break;
@@ -44,18 +46,21 @@ export class Maquina {
                 case 'Q1':
                     switch (this._cambioIzqDer[index]) {
                         case 'a':
-                            aux='Q1';
-                            this._transicion.push(new Transicion('a',Movimientos.Izq,aux))
+                            aux = 'Q1';
+                            this._transicion.push(new Transicion(this._cambioIzqDer[index],'a', Movimientos.Izq, aux))
                             break;
                         case '_':
-                            aux='Q2';
-                            this._transicion.push(new Transicion('_',Movimientos.Der,aux))
+                            aux = 'Q2';
+                            this._transicion.push(new Transicion(this._cambioIzqDer[index],'_', Movimientos.Der, aux))
                             break;
                     }
                     break;
             }
         }
-        console.log('esto es vida', this._transicion);
     }
-    
+
+    get transicion(){
+        return this._transicion;
+    }
+
 }

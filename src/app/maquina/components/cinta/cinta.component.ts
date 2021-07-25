@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Transicion } from '../../models/transicion.model';
 
 @Component({
   selector: 'app-cinta',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cinta.component.scss']
 })
 export class CintaComponent implements OnInit {
+
+  @Input() arrayEntrada: string[] = [];
+  @Input() secuencia: Transicion[] = [];
+  @Input() enabled = false;
+  
 
   constructor() { }
 
