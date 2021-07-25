@@ -1,0 +1,28 @@
+<p-card header="MAQUINA DE TURING - UNIMAGDALENA" [style]="{'width': '20rem', 'margin-bottom': '2em'}">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="assets/showcase/images/turing.jpg">
+    </ng-template>
+    <!-- <form>
+        
+    </form> -->
+    <div class="card flex flex-column">
+        <form [formGroup]="formGroup" (ngSubmit)="comenzar" autocomplete="off">
+            <div class="flex align-items-center justify-content-center m-2">
+                <span class="p-float-label">
+                    <input id="float-entrada" type="text" pInputText formControlName="entrada" [pKeyFilter]="blockSpace"> 
+                    <label for="float-entrada">Entrada</label>
+                </span>
+            </div>
+            <div class="flex align-items-center justify-content-center mt-5">
+                <span class="p-float-label">
+                    <input type="text" pInputText  id="float-velocidad" readonly [value]="velocidad!.value"/>
+                    <label for="float-velocidad">Velocidad de cinta</label>
+                </span>
+            </div>
+                <p-slider formControlName="velocidad" [min]="10" [max]="100" [step]="10" class="m-5" ></p-slider>
+            <div class="flex align-items-center justify-content-center mt-5">
+                <button type="submit" (click)="comenzar()" pButton pRipple type="button" label="Comenzar" [disabled]="formGroup.invalid" class="p-button-raised p-button-success"></button>
+            </div>
+        </form>
+    </div>
+</p-card>
