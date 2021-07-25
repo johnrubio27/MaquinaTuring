@@ -1,9 +1,7 @@
 import { Movimientos, Transicion } from './transicion.model';
 export class Maquina {
     entrada: string[];
-    _acciones: string[] = [];
-    _entradaResultante: string[] = [];
-    _estados: string[] = [];
+    _cambioIzqDer: string[] = [];
     _transicion: Transicion[] = [];
     constructor(entrada: string[]) {
         this.entrada = entrada;
@@ -16,17 +14,17 @@ export class Maquina {
                     case 'Q0':
                         switch (this.entrada[index]) {
                             case 'a':
-                                this._entradaResultante.push('a');
+                                this._cambioIzqDer.push('a');
                                 aux = 'Q0';
                                 this._transicion.push(new Transicion('a',Movimientos.Der,aux))
                                 break;
                             case 'b':
-                                this._entradaResultante.push('a');
+                                this._cambioIzqDer.push('a');
                                 aux = 'Q0';
                                 this._transicion.push(new Transicion('a',Movimientos.Der,aux))
                                 break;
                             case '_':
-                                this._entradaResultante.push('_');
+                                this._cambioIzqDer.push('_');
                                 aux = 'Q1';
                                 this._transicion.push(new Transicion('_',Movimientos.Izq,aux))
                                 break;
@@ -36,15 +34,15 @@ export class Maquina {
             }
         }
 
-        this._entradaResultante.unshift('_');
-        // console.log(this._entradaResultante);
-        // console.log('Entrada longitud', this._entradaResultante.length - 2);
+        this._cambioIzqDer.unshift('_');
+        // console.log(this._cambioIzqDer);
+        // console.log('Entrada longitud', this._cambioIzqDer.length - 2);
         // console.log('Empezo lo bueno');
 
-        for (let index = this._entradaResultante.length - 2; index > -1; index--) {
+        for (let index = this._cambioIzqDer.length - 2; index > -1; index--) {
             switch (aux) {
                 case 'Q1':
-                    switch (this._entradaResultante[index]) {
+                    switch (this._cambioIzqDer[index]) {
                         case 'a':
                             aux='Q1';
                             this._transicion.push(new Transicion('a',Movimientos.Izq,aux))
@@ -60,7 +58,4 @@ export class Maquina {
         console.log('esto es vida', this._transicion);
     }
     
-    get acciones (){
-        return this._acciones;
-    }
 }
