@@ -19,6 +19,8 @@ export class FormComponent implements OnInit {
   // Array que se utilizara para el reccorrido de la Maquina de turing (convertidor de la letra a la letra a)
   arrayEntrada!: string[];
 
+  nuevaEntrada!: string[];
+
   maquina!: Maquina;
 
   // Secuencia de los estados, entrada y salida del texto, convirtiendo las b en a;
@@ -34,7 +36,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.fb.group({
       entrada: ['', [Validators.required]],
-      velocidad: [50, [Validators.required]]
+      velocidad: [10, [Validators.required]]
     });
   }
 
@@ -56,6 +58,11 @@ export class FormComponent implements OnInit {
     setTimeout(() => {
       this.enabled = true;
     }, velocidad*100);
+    this.maquina.nuevaEntrada.pop();
+    this.maquina.nuevaEntrada.push('H _');
+    this.nuevaEntrada = this.maquina.nuevaEntrada;
+
+    console.log(this.nuevaEntrada)
     
   }
 

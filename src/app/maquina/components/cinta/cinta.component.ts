@@ -11,6 +11,7 @@ export class CintaComponent implements OnInit {
   @Input() arrayEntrada: string[] = [];
   @Input() secuencias: Transicion[] = [];
   @Input() enabled = false;
+  @Input() nuevasEntradas: string[] = [];
 
   constructor() { }
 
