@@ -22,7 +22,7 @@ export class FormComponent implements OnInit {
   maquina!: Maquina;
 
   // Secuencia de los estados, entrada y salida del texto, convirtiendo las b en a;
-  secuencia!: Transicion[];
+  secuencias!: Transicion[];
 
   // Activa la cinta
   enabled: boolean = false;
@@ -43,6 +43,7 @@ export class FormComponent implements OnInit {
   }
 
   comenzar(): void {
+    this.enabled = false;
     let { entrada, velocidad }: {entrada: string, velocidad: number} = this.formGroup.value;
 
     entrada = '_' + entrada + '_';
@@ -50,9 +51,11 @@ export class FormComponent implements OnInit {
 
     this.maquina = new Maquina(this.arrayEntrada);
     this.maquina.rrecorrer('Q0');
-    this.secuencia = this.maquina.transicion;
+    this.secuencias = this.maquina.transicion;
 
-    this.enabled = true;
+    setTimeout(() => {
+      this.enabled = true;
+    }, velocidad*100);
     
   }
 

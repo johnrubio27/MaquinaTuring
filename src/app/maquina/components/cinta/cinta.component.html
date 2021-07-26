@@ -4,7 +4,7 @@
             <div class="col-12">
                 <ng-container *ngFor="let item of arrayEntrada;let i = index">
                     <p-avatar *ngIf="i === 1" label="Q0" styleClass="m-2" size="large" [style]="{'background-color':'#FCE905', 'color': '#ffffff'}"></p-avatar>
-                    <p-avatar *ngIf="i !== 1" label=" " styleClass="m-2 opacity-0" size="large" [style]="{'background-color':'#FFC300x', 'color': '#ffffff'}"></p-avatar>
+                    <p-avatar *ngIf="i !== 1" label=" " styleClass="m-2 opacity-0" size="large" [style]="{'background-color':'#FFC300', 'color': '#ffffff'}"></p-avatar>
                 </ng-container>
             </div>
         </div>      
@@ -12,15 +12,45 @@
             <div class="col-12">
                 <ng-container *ngFor="let item of arrayEntrada;let i = index">
                     <p-avatar *ngIf="i === 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color': '#FF5733', 'color': '#ffffff'}"></p-avatar>
-                    <p-avatar *ngIf="i !== 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                    <p-avatar *ngIf="i !== 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color': '#2196F3', 'color': '#ffffff'}"></p-avatar>
                 </ng-container>
             </div>
         </div>
     </p-fieldset>
     
-    <ng-container *ngFor="let item of secuencia;let i = index">
-        {{item | json}}
-        <!-- <p-avatar *ngIf="i === 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color':'#000000', 'color': '#ffffff'}"></p-avatar> -->
-        <!-- <p-avatar *ngIf="i !== 1" [label]=item styleClass="m-2" size="large" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar> -->
+    <ng-container>
+        <p-fieldset legend="Resuelto">
+            <div class="grid" *ngFor="let secuencia of secuencias;let i = index">
+                <div class="col-12">
+                        <p-avatar [label]="secuencia.nuevoEstado" styleClass="m-2" size="large" [style]="{'background-color':'#FCE905', 'color': '#ffffff'}"></p-avatar>
+                        <p-avatar [label]="secuencia.letraActual" styleClass="m-2" size="large" [style]="{'background-color':'#FF5733', 'color': '#ffffff'}"></p-avatar>
+                        <p-avatar [label]="secuencia.reemplazo" styleClass="m-2" size="large" [style]="{'background-color': '#06BD3B', 'color': '#ffffff'}"></p-avatar>
+                        <ng-container *ngIf="secuencia.movimiento === 'IZQUIERDA'">
+                            <p-avatar icon="pi pi-arrow-left" styleClass="m-2" size="large" [style]="{'background-color':'#FFC300x', 'color': '#FF5733'}"></p-avatar>
+                        </ng-container>
+                        <ng-container *ngIf="secuencia.movimiento === 'DERECHA'">
+                            <p-avatar icon="pi pi-arrow-right" styleClass="m-2" size="large" [style]="{'background-color':'#FFC300x', 'color': '#06BD3B'}"></p-avatar>
+                        </ng-container>
+                </div>
+            </div> 
+        </p-fieldset>
     </ng-container>
+    <!-- <ng-container>
+        <p-fieldset legend="Resuelto">
+            <div class="grid" *ngFor="let secuencia of secuencias;let i = index">
+                <div class="col-12">
+                        <p-avatar [label]="secuencia.nuevoEstado" styleClass="m-2" size="large" [style]="{'background-color':'#FCE905', 'color': '#ffffff'}"></p-avatar>
+                        <p-avatar [label]="secuencia.letraActual" styleClass="m-2" size="large" [style]="{'background-color':'#FFC300x', 'color': '#ffffff'}"></p-avatar>
+                        <p-avatar [label]="secuencia.reemplazo" styleClass="m-2" size="large" [style]="{'background-color':'#FFC300x', 'color': '#ffffff'}"></p-avatar>
+                        <ng-container *ngIf="secuencia.movimiento === 'IZQUIERDA'">
+                            <p-avatar icon="pi pi-arrow-left" styleClass="m-2" size="large" [style]="{'background-color':'#FFC300x', 'color': '#ffffff'}"></p-avatar>
+                        </ng-container>
+                        <ng-container *ngIf="secuencia.movimiento === 'DERECHA'">
+                            <p-avatar icon="pi pi-arrow-right" styleClass="m-2" size="large" [style]="{'background-color':'#FFC300x', 'color': '#ffffff'}"></p-avatar>
+                        </ng-container>
+                </div>
+            </div> 
+        </p-fieldset>
+    </ng-container> -->
+    
 </div>

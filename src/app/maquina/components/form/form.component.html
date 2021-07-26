@@ -17,8 +17,8 @@
                     </div>
                     <div class="flex align-items-center justify-content-center mt-5">
                         <span class="p-float-label">
-                            <input type="text" pInputText  id="float-velocidad" readonly [value]="velocidad!.value"/>
-                            <label for="float-velocidad">Velocidad de cinta</label>
+                            <input type="text" pInputText  id="float-velocidad" readonly [value]="(velocidad!.value)/10"/>
+                            <label for="float-velocidad">Tiempo de la cinta (segundos)</label>
                         </span>
                     </div>
                         <p-slider formControlName="velocidad" [min]="10" [max]="100" [step]="10" class="m-5" ></p-slider>
@@ -35,7 +35,7 @@
 
 
 <div class="flex align-items-center justify-content-center m-2" style="min-width: 200px; min-height: 100px">
-    <app-cinta [arrayEntrada]="arrayEntrada" [secuencia]="secuencia" [enabled]="enabled"></app-cinta>
+    <app-cinta [arrayEntrada]="arrayEntrada" [secuencias]="secuencias" [enabled]="enabled"></app-cinta>
     <!-- <app-cinta></app-cinta> -->
 </div>
 

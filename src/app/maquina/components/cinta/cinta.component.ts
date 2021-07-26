@@ -9,9 +9,8 @@ import { Transicion } from '../../models/transicion.model';
 export class CintaComponent implements OnInit {
 
   @Input() arrayEntrada: string[] = [];
-  @Input() secuencia: Transicion[] = [];
+  @Input() secuencias: Transicion[] = [];
   @Input() enabled = false;
-  
 
   constructor() { }
 
